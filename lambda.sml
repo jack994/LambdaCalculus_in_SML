@@ -280,7 +280,7 @@ fun oneCreduce (CID id) = (CID id)
 |     oneCreduce(CI)=(CI)
 |     oneCreduce(CS)=(CS)
 |     oneCreduce (CAPP(e1,e2)) = if (isCOMredex (CAPP(e1,e2))) 
-    													then (cred (CAPP(e1,e2))) else
+    			    then (cred (CAPP(e1,e2))) else
                             if (hasCredex e1) then CAPP(oneCreduce e1, e2) else
                             if (hasCredex e2) then CAPP(e1, (oneCreduce e2)) 
                             else (CAPP(e1,e2));
@@ -315,7 +315,7 @@ fun printCreduce_andsteps e = (let val tmp =  (creduce e)
 (*------------------------------------eta-reduction in M---------------------------------------*) 
 
 fun is_eta_redex (LAM(id,(APP( e1, e2)))) = if free id e1 then false 
-											else (if (ID id) =  e2 then true else false)
+         else (if (ID id) =  e2 then true else false)
 |   is_eta_redex _ = false;
 
 fun has_eta_redex (ID id) = false 
